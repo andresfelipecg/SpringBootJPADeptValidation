@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Transaction</title>
+</head>
+<body>
+    <form action="#" th:action="@{/updatetransaction/{id}(id=${transaction.transactionid)}" th:object="${transaction}" method="post">
+    
+    <label for="transaction">Customer Id</label>
+    <input type="text" th:field="*{customerid}" id="customerid" placeholder="Customer Id">
+    <span th:if="${#fields.hasErrors('customerid')}" th:errors="*{customerid}"></span>
+    </br>
+    <label for="transaction">Book ID</label>
+    <input type="text" th:field="*{bookid}" id="bookid" placeholder="Book Id">
+    <span th:if="${#fields.hasErrors('bookid')}" th:errors="*{bookid}"></span>
+    </br>
+    <label for="transaction">Date</label>
+    <input type="date" th:field="*{trxndate}" id="trxndate" placeholder="AAAA-MM-DD">
+    <span th:if="${#fields.hasErrors('trxndate')}" th:errors="*{trxndate}"></span>
+    </br>
+    <label for="transaction">Rating</label>
+    <select th:field="*{trxntype}" id="trxntype">
+    <option value="">Select a book status</option>
+    <option value="available">Check-in</option>
+    <option value="lentOut">Check out</option>
+    </select>
+    <span th:if="${#fields.hasErrors('trxntype')}" th:errors="*{trxntype}"></span>
+    </br>
+    
+    <input type="submit" value="Edit Book">
+</form> 
+</body>
+</html>

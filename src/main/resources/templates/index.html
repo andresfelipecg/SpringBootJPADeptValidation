@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book Lending Information System info</title>
+</head>
+<body>
+
+<script type="text/javascript">
+function convertToStars(num) {
+	  // Initialize a string to hold the stars
+	  var num2=num * 1;
+	  var stars = "";
+
+	  // Loop from 1 to num
+	  for (var i = 1; i <= num2; i++) {
+	    // Add a star to the string for each iteration of the loop
+	    stars += "&#9733;";
+	  }
+
+	  // Return the string of stars
+	  return stars;
+	}
+
+</script>
+
+  <h1>List of Books:</h1><br>
+  
+<table>
+        <thead>
+         <tr>
+           <th>Book Id</th>
+           <th>Title</th>
+           <th>Author Lastname</th>
+            <th>Author Firstname</th>
+            <th>Rating</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="book:${books}">
+             <td th:text="${book.bookid}">Book Id</td>
+             <td th:text="${book.title}">Title</td>
+             <td th:text="${book.authorlastname}">Author Lastname</td> 
+             <td th:text="${book.authorfirstname}">Author Firsname</td> 
+              <td th:text="${book.rating}">Rating</td> 
+             <!-- <td th:text="${#javascript(convertToStars(${book.rating}))}">Rating</td> -->
+             <td><a th:href="@{/editbook/{id}(id=${book.bookid})}">Update</a></td>
+             <td><a th:href="@{/deletebook/{id}(id=${book.bookid})}">Delete</a></td>
+          </tr>
+        </tbody>
+    </table>
+    
+    <p><a href="/addbook">Add a new Book</a></p>
+    
+    <br><br>
+    
+    
+  <h1>Books Transactions:</h1><br>
+  
+<table>
+        <thead>
+         <tr>
+           <th>Transaction ID</th>
+           <th>Customer Id</th>
+           <th>Book Id</th>
+            <th>Date</th>
+            <th>Book Status</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="transaction:${transactions}">
+             <td th:text="${transaction.transactionid}">Transaction ID</td>
+             <td th:text="${transaction.customerid}">Customer Id</td>
+             <td th:text="${transaction.bookid}">Book Id</td> 
+             <td th:text="${transaction.trxndate}">Date</td> 
+              <td th:text="${transaction.trxntype}">Book Status</td> 
+             <!-- <td th:text="${#javascript(convertToStars(${book.rating}))}">Rating</td> -->
+             <td><a th:href="@{/edittransaction/{id}(id=${transaction.transactionid})}">Update</a></td>
+             <td><a th:href="@{/deletetransaction/{id}(id=${transaction.transactionid})}">Delete</a></td>
+          </tr>
+        </tbody>
+    </table>
+    
+    <p><a href="/addtransaction">Add a new transaction</a></p>
+    
+    <br><br>
+    
+    
+    <h1>Book Availables:</h1><br>
+    
+    <table>
+        <thead>
+         <tr>
+           <th>Book Id</th>
+           <th>Title</th>
+           <th>Author Lastname</th>
+            <th>Author Firstname</th>
+            <th>Rating</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="bookavailable:${booksavailables}">
+             <td th:text="${bookavailable.bookid}">Book Id</td>
+             <td th:text="${bookavailable.title}">Title</td>
+             <td th:text="${bookavailable.authorlastname}">Author Lastname</td> 
+             <td th:text="${bookavailable.authorfirstname}">Author Firsname</td> 
+              <td th:text="${bookavailable.rating}">Rating</td> 
+             <!-- <td th:text="${#javascript(convertToStars(${book.rating}))}">Rating</td> -->
+            
+          </tr>
+        </tbody>
+    </table>
+    
+      <h1>Lent out books:</h1><br>
+    
+    <table>
+        <thead>
+         <tr>
+           <th>Book Id</th>
+           <th>Title</th>
+           <th>Author Lastname</th>
+            <th>Author Firstname</th>
+            <th>Rating</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="booklentout:${bookslentout}">
+             <td th:text="${booklentout.bookid}">Book Id</td>
+             <td th:text="${booklentout.title}">Title</td>
+             <td th:text="${booklentout.authorlastname}">Author Lastname</td> 
+             <td th:text="${booklentout.authorfirstname}">Author Firsname</td> 
+              <td th:text="${booklentout.rating}">Rating</td> 
+             <!-- <td th:text="${#javascript(convertToStars(${book.rating}))}">Rating</td> -->
+            
+          </tr>
+        </tbody>
+    </table>
+    
+       
+      <h1>Customer:</h1><br>
+    
+    <table>
+        <thead>
+         <tr>
+           <th>Customer id</th>
+           <th>First Name</th>
+           <th>Last Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+             <th>Email</th>
+            
+            
+        </tr>
+        </thead>
+        <tbody>
+          <tr th:each="customer:${customers}">
+             <td th:text="${customer.fcustomerid}">Book Id</td>
+             <td th:text="${customer.firstname}">First Name</td>
+             <td th:text="${customer.lastname}">Last Name</td> 
+             <td th:text="${customer.address}">Address</td> 
+              <td th:text="${customer.phone}">Phone</td> 
+           <td th:text="${customer.emailid}">emailid</td> 
+            
+          </tr>
+        </tbody>
+    </table>
+    
+    
+</body>
+</html>

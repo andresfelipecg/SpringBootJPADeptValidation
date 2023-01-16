@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Book</title>
+</head>
+<body>
+    <form action="#" th:action="@{/add}" th:object="${book}" method="post">
+    
+    <label for="title">Book title</label>
+    <input type="text" th:field="*{title}" id="title" placeholder="Book title">
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    </br>
+    
+    <label for="authorlastname">Last Name</label>
+    <input type="text" th:field="*{authorlastname}" id="authorlastname" placeholder="authorlastname">
+    <span th:if="${#fields.hasErrors('authorlastname')}" th:errors="*{authorlastname}"></span>
+    </br>
+    
+     <label for="authorfirstname">First Name</label>
+    <input type="text" th:field="*{authorfirstname}" id="authorfirstname" placeholder="authorfirstname">
+    <span th:if="${#fields.hasErrors('authorfirstname')}" th:errors="*{authorfirstname}"></span>
+    </br>
+    
+    <label for="rating">Rating (enter 1-5) </label>
+    <input type="text" th:field="*{rating}" id="rating" placeholder="rating">
+    <span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></span>
+    </br>
+    
+    
+    <input type="submit" value="Add Book">
+</form> 
+</body>
+</html>
